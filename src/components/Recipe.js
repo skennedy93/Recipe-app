@@ -1,53 +1,44 @@
 import React, { Component } from 'react';
 import Title from './Title';
-import Image from './Image';
+import Image from './Image'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
-	container: {
-	  padding: 20,
-	  marginTop: 70,
-	},
-	card: {
-	  marginTop: 25,
-	  position: 'relative',
-	  overflow: 'visible',
-	  minWidth: '40%',
-	  minHeight: 350,
-	  zIndex: 0,
-	},
-	paper: {
-	  margin: 'auto',
-	  marginTop: 50,
-	},
-
+	root: {
+		flexGrow: 1,
+	  },
+	  paper: {
+		width: 370,
+	  },
   });
 
-export default class Recipe extends Component {
+ class Recipe extends Component {
 	render(){
 		const { classes } = this.props;
 		return(
           <div>
-		      <Grid container spacing={2}>
-			  <Grid item xs={12}>
+		      <Grid container className={classes.root} spacing={2}>
 				<Grid container justify="center" >
 				{this.props.meals.map((item, index) => {
          		return ( 
-         			<div
-         				key={index} 
-         				href={item.strSource}>
-         				<Image source={item.strMealThumb} text={item.strMeal} />
-         				<Title title={item.strMeal} />
-         			</div> 
+					 <Paper className={classes.paper}>
+						<Image source={item.strMealThumb} text={item.strMeal} />
+						<Title title={item.strMeal} />
+				   </Paper>
          		)
          	})}
-
 				</Grid>
-			  </Grid>
 			</Grid>
           </div>
 
 		)
 	}
 }
+Recipe.propTypes = {
+	classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(Recipe);

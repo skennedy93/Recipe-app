@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 export default class Image extends Component {
  render(){
-  return( <img src={this.props.source} alt={this.props.text} /> )
+  return( <img src={this.props.source} alt={this.props.text} width="300" height="300"/> )
  }
 }
