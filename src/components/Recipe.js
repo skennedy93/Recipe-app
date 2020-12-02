@@ -12,6 +12,9 @@ const styles = theme => ({
 	  },
 	  paper: {
 		width: 370,
+		margin:"auto",
+		marginTop: 10,
+		marginBottom:10
 	  },
   });
 
@@ -20,7 +23,6 @@ const styles = theme => ({
 		const { classes } = this.props;
 		return(
           <div>
-		      <Grid container className={classes.root} spacing={2}>
 				<Grid container justify="center" >
 				{this.props.meals.map((item, index) => {
          		return ( 
@@ -31,7 +33,6 @@ const styles = theme => ({
          		)
          	})}
 				</Grid>
-			</Grid>
           </div>
 
 		)
